@@ -4,12 +4,12 @@
 ![Next.js](https://img.shields.io/badge/Next.js-14.1.0-black)
 ![TypeScript](https://img.shields.io/badge/TypeScript-5.x-blue)
 ![Tailwind CSS](https://img.shields.io/badge/Tailwind-3.3.0-38B2AC)
+<img src="https://img.shields.io/badge/Deployed%20on-Vercel-black?logo=vercel" alt="Vercel Badge"/>
 
 A retro-inspired, terminal-based portfolio website with ASCII art and a Linux terminal interface. This interactive portfolio simulates a command-line experience while showcasing professional information in a unique and engaging way.
 <p align="center">
-  <img src="thi.png" alt="Screenshot" width="800"/>
+  <img src="thi.png" alt="Screenshot" width="1000"/>
 </p>
----
 
 ## ✨ Features
 
