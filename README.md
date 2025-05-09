@@ -7,7 +7,7 @@
 
 A retro-inspired, terminal-based portfolio website with ASCII art and a Linux terminal interface. This interactive portfolio simulates a command-line experience while showcasing professional information in a unique and engaging way.
 <p align="center">
-  <img src="this.png" alt="Screenshot" width="600"/>
+  <img src="thi.png" alt="Screenshot" width="600"/>
 </p>
 ---
 
