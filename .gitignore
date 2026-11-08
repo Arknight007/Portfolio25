@@ -1,11 +1,25 @@
-# generated files
-target/
-generated/
-
 # dependencies
-Dependencies.toml
+node_modules/
 
-# config files
-Config.toml
-# the config files used for testing, Uncomment the following line if you want to commit the test config files
-#!**/tests/Config.toml
+# next.js
+.next/
+out/
+next-env.d.ts
+
+# production
+build/
+
+# vercel
+.vercel
+
+# typescript
+*.tsbuildinfo
+
+# env
+.env*
+!.env.example
+
+# logs & os
+npm-debug.log*
+.DS_Store
+*.pem
