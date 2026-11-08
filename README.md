@@ -1,247 +1,79 @@
-# Portfolio Website
+# Srikar Molahalli — Portfolio v2
 
-![License](https://img.shields.io/badge/license-MIT-blue.svg)
-![Next.js](https://img.shields.io/badge/Next.js-14.1.0-black)
-![TypeScript](https://img.shields.io/badge/TypeScript-5.x-blue)
-![Tailwind CSS](https://img.shields.io/badge/Tailwind-3.3.0-38B2AC)
-<img src="https://img.shields.io/badge/Deployed%20on-Vercel-black?logo=vercel" alt="Vercel Badge"/>
+**Live:** https://srikar-knightark007-portfolio.vercel.app
 
-A retro-inspired, terminal-based portfolio website with ASCII art and a Linux terminal interface. This interactive portfolio simulates a command-line experience while showcasing professional information in a unique and engaging way.
+A hand-built, animation-heavy portfolio: deep-space night sky, Diwali lights, and live simulations of the projects themselves.
+
 <p align="center">
-  <img src="thi.png" alt="Screenshot" width="1000"/>
+  <img src="docs/greeting.jpg" alt="The Diwali greeting: HAPPY DIWALI lit up inside a LeetCode-style submission heatmap" width="900" />
 </p>
 
-## ✨ Features
+## What's on the page
 
-<table>
-  <thead>
-    <tr>
-      <th>Feature</th>
-      <th>Description</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>🖥️ Terminal Interface</td>
-      <td>Fully interactive command-line experience with command history</td>
-    </tr>
-    <tr>
-      <td>🎨 ASCII Art</td>
-      <td>Custom ASCII art for section headers and portrait</td>
-    </tr>
-    <tr>
-      <td>📱 Responsive Design</td>
-      <td>Fully responsive layout that works on mobile, tablet, and desktop</td>
-    </tr>
-    <tr>
-      <td>🌙 Dark Mode</td>
-      <td>Terminal-inspired dark theme for optimal viewing</td>
-    </tr>
-    <tr>
-      <td>📺 CRT Effect</td>
-      <td>Toggle CRT screen effect for retro aesthetics</td>
-    </tr>
-    <tr>
-      <td>⌨️ Command Navigation</td>
-      <td>Navigate through sections using terminal commands</td>
-    </tr>
-    <tr>
-      <td>🔄 Boot Sequence</td>
-      <td>Simulated boot sequence animation on initial load</td>
-    </tr>
-    <tr>
-      <td>📊 Skills Visualization</td>
-      <td>Visual representation of skills with progress bars</td>
-    </tr>
-    <tr>
-      <td>📝 Project Diagrams</td>
-      <td>ASCII diagrams showing project architecture</td>
-    </tr>
-  </tbody>
-</table>
+| | |
+|---|---|
+| 🪔 **Diwali greeting** | On first open, a LeetCode-style submission heatmap fills with a year of green "submissions". Then the squares spelling **HAPPY DIWALI** ignite as diyas, an *Accepted* verdict appears with शुभ दीपावली, and fireworks go up. Every square is a real date with a hover tooltip. It shows once per session; the diya in the nav (or `diwali` in the terminal) replays it. |
+| 🌌 **Night sky** | One canvas behind everything: parallax starfield, shooting stars, rising embers, sky lanterns, and fireworks you launch by clicking the sky. |
+| 🪐 **Hero orrery** | Focus areas orbit a rangoli sun in pseudo-3D, tilting with the mouse. |
+| 🛰️ **Experience** | A scroll-drawn flight-log timeline. Collins Aerospace gets a live CI/CD pipeline, IISER Kolkata a soft-landing trajectory simulation, and each role has animated impact bars. |
+| 🚀 **Projects** | **Quasar**: step through source → tokens → AST → LLVM IR → x86. **Solar simulator**: drag the day and latitude to get real declination, noon elevation, day length and the sun's path. **Borderless**: remittance packets routed through an on-chain hub. |
+| ✨ **Also** | Skill constellations, a graph-database visual for the publication, a certifications wall, and a working mini terminal (`help`, `cd projects`, `sudo hire srikar`…). |
 
----
+<p align="center">
+  <img src="docs/hero.jpg" alt="Hero section" width="900" />
+  <img src="docs/projects.jpg" alt="Quasar compiler pipeline visual" width="900" />
+</p>
 
-## 🛠️ Technologies Used
+Respects `prefers-reduced-motion` (static frames, no auto-advance), pauses canvases that are off-screen or in a hidden tab, and works down to 360 px wide.
 
-<table>
-  <thead>
-    <tr>
-      <th>Category</th>
-      <th>Technologies</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td><strong>Frontend Framework</strong></td>
-      <td>Next.js 14, React 18</td>
-    </tr>
-    <tr>
-      <td><strong>Styling</strong></td>
-      <td>Tailwind CSS, CSS Modules</td>
-    </tr>
-    <tr>
-      <td><strong>UI Components</strong></td>
-      <td>shadcn/ui, Radix UI</td>
-    </tr>
-    <tr>
-      <td><strong>Icons</strong></td>
-      <td>Lucide React</td>
-    </tr>
-    <tr>
-      <td><strong>Typography</strong></td>
-      <td>JetBrains Mono, Inter</td>
-    </tr>
-    <tr>
-      <td><strong>State Management</strong></td>
-      <td>React Hooks</td>
-    </tr>
-    <tr>
-      <td><strong>Deployment</strong></td>
-      <td>Vercel</td>
-    </tr>
-    <tr>
-      <td><strong>Development Tools</strong></td>
-      <td>TypeScript, ESLint</td>
-    </tr>
-  </tbody>
-</table>
+## Editing content
 
----
+**Everything lives in [`lib/data.ts`](lib/data.ts).** Experience, projects, skills, certifications, links and copy are all there; the components only render it.
 
-## 🏗️ Project Architecture
+- **Turn the Diwali greeting off** after the season: set `festival.enabled = false` in `lib/data.ts`. Lanterns, auto-fireworks and the footer diyas switch off with it.
+- **Résumé:** replace `public/Srikar_Molahalli_Resume.pdf`.
+- **Quasar's GitHub link** points at the profile; set `projects[0].link` to the repo once it's public.
 
-```mermaid
-flowchart TD
-  Page[app/page.tsx - Main Entry Point]
-  Boot[BootSequence - Initial Loading]
-  Terminal[Terminal - Main Interface]
-  CRT[CRTToggle - Effect Toggle]
-  Sections[Section Components - Content Display]
-  ASCII[ASCII Art - Visual Elements]
-  UI[UI Components - Buttons, Cards]
+## Stack
 
-  Page --> Boot
-  Page --> Terminal
-  Page --> CRT
+Next.js 16 (App Router, statically prerendered) · React 19 · Tailwind CSS 4 · Motion · Canvas 2D · TypeScript. No UI kit; fonts via `next/font` (Bricolage Grotesque, Instrument Serif, Geist, JetBrains Mono, Tiro Devanagari Hindi).
 
-  Terminal --> Sections
-  Terminal --> ASCII
-  Terminal --> UI
-  Sections --> Terminal
-  UI --> Terminal
+```
+app/            layout (metadata, JSON-LD), page, OG image, icon, robots, sitemap
+components/
+  greeting/     the heatmap Diwali intro
+  fx/           night-sky canvas
+  hero/         hero + orrery
+  sections/     about, experience, projects, skills, education, contact
+  viz/          compiler, solar, defi, pipeline, descent visualisations
+  ui/           reveal, counter, spotlight card, icons, headings
+lib/            data.ts (content), fireworks engine, pixel font, utils
 ```
 
+## Run locally
 
----
-
-## 🧭 Sequence Diagram
-
-```mermaid
-sequenceDiagram
-  participant User
-  participant Terminal
-  participant Router
-  participant Section
-
-  User->>Terminal: Types command (e.g., "about")
-  Terminal->>Router: Match command
-  Router-->>Terminal: Return matching component
-  Terminal->>Section: Render corresponding section
-  Section-->>Terminal: Display content
-  Terminal-->>User: Render output in terminal view
-```
-
----
-
-## 📥 Installation
+Requires Node 20.9+.
 
 ```bash
-# Clone the repository
-git clone https://github.com/yourusername/ascii-portfolio.git
-
-# Navigate to the project directory
-cd ascii-portfolio
-
-# Install dependencies
 npm install
-
-# Start the development server
-npm run dev
+npm run dev        # http://localhost:3000
+npm run build      # production build (also type-checks)
 ```
 
-### Prerequisites
+## Deploying on Vercel
 
-- Node.js 18.x or higher
-- npm or yarn
+The project deploys with Vercel's defaults (framework **Next.js**, install `npm install`, build `next build`). If the project was set up for the old v0 code, check **Settings → Build & Deployment** and clear any overridden install command (e.g. `pnpm install`) so Vercel uses `package-lock.json`.
 
----
+What was fixed from v1:
+- an empty `pnpm-lock.yaml` that made `pnpm install --frozen-lockfile` fail → replaced with a real `package-lock.json`
+- Next.js 15.2.4 (affected by critical security advisories that Vercel blocks deploys for) → Next.js 16.4.5, all deps pinned, `npm audit` clean
+- duplicate `next.config.js`/`.mjs` and `postcss.config.js`/`.mjs` → one of each
+- `ignoreBuildErrors` / `ignoreDuringBuilds` hiding broken code → removed; the build type-checks
+- `"latest"` dependency versions and a React 19 peer-dependency conflict → pinned, conflict removed
+- background image hot-linked from v0 blob storage → no external runtime assets
+- a Ballerina `.gitignore` that didn't ignore `node_modules`/`.next` → Next.js `.gitignore`
+- added metadata, Open Graph image, sitemap, robots, JSON-LD and security headers
 
-## 🚀 Usage
+## License
 
-Visit `http://localhost:3000` in your browser after starting the dev server.
-
-### Available Terminal Commands
-
-```
-help          - Show available commands
-about         - View personal information
-education     - View educational background
-skills        - View technical skills
-experience    - View work experience
-projects      - View projects
-certifications- View certifications and achievements
-contact       - View contact information
-clear         - Clear the terminal
-ls            - List available sections
-whoami        - Display user information
-date          - Display current date and time
-```
-
-You can also use the navigation buttons below the terminal.
-
----
-
-## 🛠️ Customization
-
-1. Edit personal content under `components/sections/`
-2. Replace ASCII art in `components/ascii-art-component.tsx`
-3. Change prompt style in `components/terminal.tsx`
-4. Update project links in `components/sections/projects-section.tsx`
-
----
-
-## 👥 Contributing
-
-Contributions are welcome!
-
-```bash
-# Fork the repository
-# Create a feature branch
-git checkout -b feature/amazing-feature
-
-# Make your changes and commit
-git commit -m "Add some amazing feature"
-
-# Push to your fork
-git push origin feature/amazing-feature
-
-# Open a Pull Request
-```
-
-### Guidelines
-
-- Match existing code style
-- Use clear commit messages
-- Update documentation
-- Comment complex logic
-- Maintain responsiveness
-- Test across devices
-
----
-
-## 📄 License
-
-This project is licensed under the [MIT License](LICENSE).
-
----
+[Apache 2.0](LICENSE)
